@@ -38,8 +38,8 @@ export const site = {
   name: 'Aram Arakelyan',
   /** Short role/tagline shown under your name. */
   role: 'Frontend Team Lead at CoinStats',
-  /** Production URL — update before deploying (used for metadata, sitemap, feed). */
-  url: 'https://aramarakelyan.dev',
+  /** Production URL — drives metadata, sitemap, and RSS. Swap for a custom domain when you add one. */
+  url: 'https://portfolio-mauve-six-58.vercel.app',
   location: 'Yerevan, Armenia',
   /** Used as the default meta description. */
   description:
