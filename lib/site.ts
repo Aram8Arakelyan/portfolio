@@ -34,12 +34,18 @@ export type EducationItem = {
   period: string
 }
 
+// On Vercel, VERCEL_PROJECT_PRODUCTION_URL is the stable production domain
+// (or your custom domain once configured); falls back to localhost in dev.
+const productionUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : 'http://localhost:3000'
+
 export const site = {
   name: 'Aram Arakelyan',
   /** Short role/tagline shown under your name. */
   role: 'Frontend Team Lead at CoinStats',
-  /** Production URL — drives metadata, sitemap, and RSS. Swap for a custom domain when you add one. */
-  url: 'https://portfolio-mauve-six-58.vercel.app',
+  /** Canonical URL — Vercel's stable production domain (auto-updates if you add a custom domain). */
+  url: productionUrl,
   location: 'Yerevan, Armenia',
   /** Used as the default meta description. */
   description:
