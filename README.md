@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
 
-## Getting Started
+My personal website and blog — a fast, statically-generated site built with
+Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4, and shadcn/ui,
+with a file-based MDX blog.
 
-First, run the development server:
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Other scripts:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Script              | Purpose                    |
+| ------------------- | -------------------------- |
+| `npm run build`     | Production build           |
+| `npm run start`     | Serve the production build |
+| `npm run lint`      | ESLint                     |
+| `npm run typecheck` | `tsc --noEmit`             |
+| `npm run format`    | Prettier                   |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Editing content
 
-## Learn More
+All personal content — name, role, bio, socials, projects, skills, experience,
+education — lives in [`lib/site.ts`](lib/site.ts). Edit it there; every page reads
+from it.
 
-To learn more about Next.js, take a look at the following resources:
+## Writing a blog post
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Drop an `.mdx` file into [`content/posts/`](content/posts) with frontmatter:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```mdx
+---
+title: 'My post title'
+description: 'One-line summary used in the listing and SEO.'
+date: '2026-07-03'
+tags: ['react', 'next.js']
+---
 
-## Deploy on Vercel
+Your content here. Code blocks are syntax-highlighted at build time.
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Set `draft: true` in the frontmatter to keep a post out of the index, sitemap, and RSS feed.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Stack
+
+- **Next.js 16** (App Router, React Server Components) · **React 19** · **TypeScript**
+- **Tailwind CSS v4** · **shadcn/ui** (Base UI) · **next-themes** (light/dark)
+- **MDX** via `next-mdx-remote-client` · **Shiki** syntax highlighting
+- RSS feed, `sitemap.xml`, `robots.txt`, and a dynamic OpenGraph image
+
+## Deployment
+
+Optimized for [Vercel](https://vercel.com) (zero-config for Next.js). Set the
+production domain in `site.url` before deploying.
